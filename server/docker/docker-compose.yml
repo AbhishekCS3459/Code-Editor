@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile-python
     image: python-service
     networks:
-      - editor_network'''
+      - editor_network
 
   c-service-builder:
     build:
