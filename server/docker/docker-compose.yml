@@ -1,0 +1,67 @@
+version: "3"
+
+services:
+  java-service-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-java
+    image: java-service
+    networks:
+      - editor_network
+    
+  python-service-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-python
+    image: python-service
+    networks:
+      - editor_network'''
+
+  c-service-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-c
+    image: c-service
+    networks:
+      - editor_network
+    
+
+  cpp-service-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-cpp
+    image: cpp-service
+    networks:
+      - editor_network
+    
+
+  javascript-service-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-javascript
+    image: javascript-service
+    networks:
+      - editor_network
+    
+  
+  
+  # code_editor_app:
+  #   build:
+  #     context: ../server
+  #     dockerfile: Dockerfile
+  #   image: code_editor_app:latest
+  #   ports:
+  #     - "3001:3001"
+  #   depends_on:
+  #     - java-service-builder
+  #     - python-service-builder
+  #     - c-service-builder
+  #     - cpp-service-builder
+  #   networks:
+  #     - editor_network
+  #   volumes:
+  #     - ../server:/usr/src/app
+
+networks:
+  editor_network:
+    driver: bridge

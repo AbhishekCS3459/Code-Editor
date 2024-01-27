@@ -1,0 +1,14 @@
+# Use an official GCC base image
+FROM gcc:latest
+
+# Set the working directory
+WORKDIR /app
+
+# Set the C++ code as an environment variable
+ENV CODE "#include <iostream>\nint main() { std::cout << \"Hello, Docker!\" << std::endl; return 0; }"
+
+# Set the input data as an environment variable
+ENV INPUT_DATA ""
+
+# Write the code to main.cpp and run the code with provided inputs
+CMD ["sh", "-c", "echo \"$CODE\" > main.cpp && echo \"$INPUT_DATA\" > input.txt && g++ -o main main.cpp && ./main < input.txt"]
